@@ -1,4 +1,5 @@
 #include "Turtle.h"
+#include "windows.h"
 
 Turtle::Turtle()
 {}
@@ -14,12 +15,14 @@ void Turtle::init(int startx, int starty, vector <vector <char>> startboard){
 void Turtle::print(){
     for (int i = 0; i < board.size(); i++){
         for (int j = 0; j < board[i].size(); j++){
-            if (board[i][j] == 'x') cout << ' ';
-            else if (y == i && x == j) cout << 'x';
+            if (y == i && x == j) cout << 'x';
+            else if (board[i][j] == 'x') cout << ' ';
             else cout << board[i][j];
         }
         cout << endl;
     }
+    Sleep(50);
+    system("cls");
 }
 
 void Turtle::moveTurtle(string dir){
@@ -42,12 +45,18 @@ void Turtle::checkCrossRoad(){
 }
 
 void Turtle::logic(){
-    if (x == 0 || y == 0) {
+    if (x == 0 || y == 0 || x == board[0].size() - 1 || y == board.size() - 1) {
         running = false;
         return;
     }
     checkCrossRoad();
-    if (board[y - 1][x] == ' '){
+    if (board[y][x - 1] == ' '){
+        //cout << " @ " << "left" << endl;
+        board[y][x] = 'x';
+        moveTurtle("left");
+        return;
+    }
+    else if (board[y - 1][x] == ' '){
         //cout << " @ " << "up" << endl;
         board[y][x] = 'x';
         moveTurtle("up");
@@ -65,14 +74,9 @@ void Turtle::logic(){
         moveTurtle("down");
         return;
     }
-    else if (board[y][x - 1] == ' '){
-        //cout << " @ " << "left" << endl;
-        board[y][x] = 'x';
-        moveTurtle("left");
-        return;
-    }
 
-    // я в тупике надо выходить
+
+    // СЏ РІ С‚СѓРїРёРєРµ РЅР°РґРѕ РІС‹С…РѕРґРёС‚СЊ
 
     if (board[y - 1][x] != ' ' && board[y][x + 1] != ' ' && board[y + 1][x] != ' ' && board[y][x - 1] != ' '){
         //cout << checkpoints[checkpoints.size() - 1][0] << " @ " << checkpoints[checkpoints.size() - 1][1] << endl;

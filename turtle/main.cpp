@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include "Turtle.h"
+#include "windows.h"
 
 
 using namespace std;
@@ -17,7 +18,7 @@ long itc_len(string str) {
 void input(int &x, int &y, vector <vector <char>> &board) {
     ifstream in;
     string line;
-    in.open("answ.txt");
+    in.open("l1.txt");
     bool bruh = true;
     while(in.good()){
         getline(in, line);
@@ -56,7 +57,7 @@ int main() {
     int x, y;
     input(x, y, board);
 
-    if (check(x, y, board)){
+    if (check(y, x, board)){
         turtle = new Turtle();
         turtle->init(y, x, board);
         turtle->print();
@@ -64,6 +65,7 @@ int main() {
         while (turtle->isRunning()){
             turtle->logic();
             turtle->print();
+            //cout << endl;
         }
     }
     else {

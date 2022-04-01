@@ -1,12 +1,14 @@
 # depslib dependency file v1.0
-1648716798 source:d:\homework\turtle\main.cpp
+1648718343 source:d:\homework\turtle\main.cpp
 	<iostream>
 	<fstream>
 	<vector>
 	"Turtle.h"
+	"windows.h"
 
-1648716708 source:d:\homework\turtle\turtle.cpp
+1648718772 source:d:\homework\turtle\turtle.cpp
 	"Turtle.h"
+	"windows.h"
 
 1648715127 d:\homework\turtle\turtle.h
 	<iostream>
